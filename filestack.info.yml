@@ -1,0 +1,8 @@
+name: Filestack
+type: module
+description: "Integration with the Filestack service."
+package: Media
+core: 8.x
+version: VERSION
+dependencies:
+  - drupal:editor
