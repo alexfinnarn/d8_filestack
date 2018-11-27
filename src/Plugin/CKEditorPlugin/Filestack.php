@@ -22,8 +22,7 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
      * {@inheritdoc}
      */
     public function getFile() {
-        return drupal_get_path('module', 'filestack').
-          '/js/plugins/ckeditor/plugin.es6.js';
+        return drupal_get_path('module', 'filestack'). '/js/plugins/ckeditor/plugin.es6.js';
     }
 
     /**
