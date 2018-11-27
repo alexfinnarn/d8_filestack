@@ -7,6 +7,6 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 
-function filestack_help($route_name, RouteMatchInterface $route_match)) {
-    return 'Some help!';
-}
+//function filestack_help($route_name, RouteMatchInterface $route_match) {
+//    return 'Some help!';
+//}

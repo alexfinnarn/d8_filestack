@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\filestackPlugin\CKEditorPlugin;
+namespace Drupal\filestack\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginBase;
 use Drupal\ckeditor\CKEditorPluginConfigurableInterface;
@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\editor\Entity\Editor;
 
 /**
- * Defines the "drupalimage" plugin.
+ * Defines the "filestack" plugin.
  *
  * @CKEditorPlugin(
  *   id = "filestack",
@@ -22,7 +22,7 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
      * {@inheritdoc}
      */
     public function getFile() {
-        return drupal_get_path('module', 'filestack') . '/js/ckeditor/plugin.es6.js';
+        return drupal_get_path('module', 'filestack') . '/js/plugins/ckeditor/plugin.es6.js';
     }
 
     /**
@@ -49,9 +49,9 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
      */
     public function getButtons() {
         return [
-          'DrupalImage' => [
-            'label' => $this->t('Image'),
-            'image' => drupal_get_path('module', 'ckeditor') . '/js/plugins/drupalimage/icons/drupalimage.png',
+          'Filestack' => [
+            'label' => $this->t('Filestack'),
+            'image' => drupal_get_path('module', 'filestack') . '/js/plugins/ckeditor/icons/fs-logo.svg',
           ],
         ];
     }
@@ -64,9 +64,18 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
      */
     public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
         $form_state->loadInclude('editor', 'admin.inc');
-        $form['image_upload'] = editor_image_upload_settings_form($editor);
-        $form['image_upload']['#attached']['library'][] = 'ckeditor/drupal.ckeditor.drupalimage.admin';
-        $form['image_upload']['#element_validate'][] = [$this, 'validateImageUploadSettings'];
+
+        $foo = 'bar';
+
+        $form['filestack']['api_key'] = [
+          '#type' => 'textfield',
+          '#title' => $this->t('Filestack API key'),
+          '#maxlength' => 255,
+          '#default_value' => $editor->getSettings()['plugins']['filestack']['filestack']['api_key'],
+        ];
+
+//        $form['image_upload']['#attached']['library'][] = 'ckeditor/drupal.ckeditor.drupalimage.admin';
+//        $form['image_upload']['#element_validate'][] = [$this, 'validateImageUploadSettings'];
         return $form;
     }
 
@@ -79,10 +88,10 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
      * @see \Drupal\editor\Form\EditorImageDialog
      * @see editor_image_upload_settings_form()
      */
-    public function validateImageUploadSettings(array $element, FormStateInterface $form_state) {
-        $settings = &$form_state->getValue(['editor', 'settings', 'plugins', 'drupalimage', 'image_upload']);
-        $form_state->get('editor')->setImageUploadSettings($settings);
-        $form_state->unsetValue(['editor', 'settings', 'plugins', 'drupalimage']);
-    }
+//    public function validateImageUploadSettings(array $element, FormStateInterface $form_state) {
+//        $settings = &$form_state->getValue(['editor', 'settings', 'plugins', 'drupalimage', 'image_upload']);
+//        $form_state->get('editor')->setImageUploadSettings($settings);
+//        $form_state->unsetValue(['editor', 'settings', 'plugins', 'drupalimage']);
+//    }
 
 }
