@@ -67,11 +67,11 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
 
         $foo = 'bar';
 
-        $form['filestack']['api_key'] = [
+        $form['api_key'] = [
           '#type' => 'textfield',
           '#title' => $this->t('Filestack API key'),
           '#maxlength' => 255,
-          '#default_value' => $editor->getSettings()['plugins']['filestack']['filestack']['api_key'],
+          '#default_value' => $editor->getSettings()['plugins']['filestack']['api_key'],
         ];
 
 //        $form['image_upload']['#attached']['library'][] = 'ckeditor/drupal.ckeditor.drupalimage.admin';
