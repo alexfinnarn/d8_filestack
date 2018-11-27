@@ -22,7 +22,7 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
      * {@inheritdoc}
      */
     public function getFile() {
-        return drupal_get_path('module', 'filestack') . '/js/plugins/ckeditor/plugin.es6.js';
+        return drupal_get_path('module', 'filestack'). '/js/plugins/ckeditor/plugin.es6.js';
     }
 
     /**
@@ -30,19 +30,17 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
      */
     public function getLibraries(Editor $editor) {
         return [
-          'core/drupal.ajax',
+          'filestack/filestack',
         ];
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getConfig(Editor $editor) {
-        return [
-          'drupalImage_dialogTitleAdd' => $this->t('Insert Image'),
-          'drupalImage_dialogTitleEdit' => $this->t('Edit Image'),
-        ];
-    }
+public function getConfig(Editor $editor) {
+    $settings = $editor->getSettings();
+    return ['aaa_filestack_api_key' => $settings['plugins']['filestack']['api_key']];
+}
 
     /**
      * {@inheritdoc}

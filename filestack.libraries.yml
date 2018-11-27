@@ -1,0 +1,4 @@
+filestack:
+  version: 1.x.x
+  js:
+    //static.filestackapi.com/filestack-js/1.x.x/filestack.min.js: { type: external, minified: true }
