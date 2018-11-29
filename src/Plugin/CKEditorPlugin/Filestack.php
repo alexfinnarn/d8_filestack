@@ -39,7 +39,7 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
    */
   public function getConfig(Editor $editor) {
     $settings = $editor->getSettings();
-    return ['aaa_filestack_api_key' => $settings['plugins']['filestack']['api_key']];
+    return ['filestack_api_key' => $settings['plugins']['filestack']['api_key']];
   }
 
   /**
@@ -70,20 +70,4 @@ class Filestack extends CKEditorPluginBase implements CKEditorPluginConfigurable
     ];
     return $form;
   }
-
-  /**
-   * #element_validate handler for the "image_upload" element in settingsForm().
-   *
-   * Moves the text editor's image upload settings from the DrupalImage plugin's
-   * own settings into $editor->image_upload.
-   *
-   * @see \Drupal\editor\Form\EditorImageDialog
-   * @see editor_image_upload_settings_form()
-   */
-  //    public function validateImageUploadSettings(array $element, FormStateInterface $form_state) {
-  //        $settings = &$form_state->getValue(['editor', 'settings', 'plugins', 'drupalimage', 'image_upload']);
-  //        $form_state->get('editor')->setImageUploadSettings($settings);
-  //        $form_state->unsetValue(['editor', 'settings', 'plugins', 'drupalimage']);
-  //    }
-
 }

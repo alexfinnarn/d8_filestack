@@ -12,8 +12,7 @@
     init(editor) {
       editor.addCommand('filestack', {
         exec(editor) {
-          // @todo change the name of the api key variable.
-          const apikey = drupalSettings.editor.formats.basic_html.editorSettings.aaa_filestack_api_key;
+          const apikey = drupalSettings.editor.formats.basic_html.editorSettings.filestack_api_key;
           const client = filestack.init(apikey);
           const options = {
             maxFiles: 20,
